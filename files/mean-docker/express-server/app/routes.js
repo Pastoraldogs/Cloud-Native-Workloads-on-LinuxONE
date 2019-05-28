@@ -63,14 +63,17 @@ module.exports = function (app) {
         });
     });
 
-
-    app.get('/api/login', function (req, res) {
-        // 查询数据库，用户名是否存在，以及密码是否匹配
-        // req.body.name
-        // req.body.password
-        // res.send() 返回true 或者 false
+    app.post('/api/login', function (req, res) {
+        // create a todo, information comes from AJAX request from Angular
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user) {
+            if (err)
+                res.send(err);
+            res.send(user.length)
+        });
     });
-
 
 
     app.get('/api/info', function (req, res) {

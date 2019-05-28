@@ -19,5 +19,8 @@ angular.module('todoService', [])
             createUser: function (userData) {
                 return $http.post('/api/createUser', userData);
             },
+            login: function (userData) {
+                return $http.post('/api/login', userData);
+            },
         }
     }]);
