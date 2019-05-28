@@ -71,7 +71,7 @@ module.exports = function (app) {
         }, function (err, user) {
             if (err)
                 res.send(err);
-            res.send(user.length)
+            res.json(user)
         });
     });
 
