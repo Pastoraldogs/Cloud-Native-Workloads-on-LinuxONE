@@ -13,8 +13,11 @@ angular.module('todoService', [])
             delete: function (id) {
                 return $http.delete('/api/todos/' + id);
             },
-            get2: function () {
+            getUser: function () {
                 return $http.get('/api/info/');
+            },
+            createUser: function (userData) {
+                return $http.post('/api/createUser', userData);
             },
         }
     }]);

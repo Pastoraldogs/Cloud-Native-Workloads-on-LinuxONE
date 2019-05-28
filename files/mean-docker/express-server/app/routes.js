@@ -11,6 +11,16 @@ function getTodos(res) {
     });
 };
 
+function getUsers(res) {
+    User.find(function (err, users) {
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+        res.json(users); // return all todos in JSON format
+    });
+};
+
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
@@ -34,17 +44,24 @@ module.exports = function (app) {
 
             // get and return all the todos after you create another
             getTodos(res);
-        });
-        User.create({
-            name: req.body.text,
-            done: false
-        }, function (err, todo) {
-            if (err)
-                res.send(err);
-        });
+        })
 
     });
 
+    app.post('/api/createUser', function (req, res) {
+
+        // create a todo, information comes from AJAX request from Angular
+        User.create({
+            name: req.body.user,
+            password: req.body.password,
+            done: false
+        }, function (err, user) {
+            if (err)
+                res.send(err);
+
+            getUsers(res);
+        });
+    });
 
 
     app.get('/api/login', function (req, res) {

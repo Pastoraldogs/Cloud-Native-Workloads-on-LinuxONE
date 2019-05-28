@@ -12,5 +12,4 @@ module.exports = mongoose.model('Todo', {
         default: ''
     }
 
-
 });
