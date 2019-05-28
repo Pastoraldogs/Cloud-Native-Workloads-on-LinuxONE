@@ -1,6 +1,6 @@
 angular.module('createUserController', [])
 
-    .controller('userController', ['$scope', '$http', 'Todos', function ($scope, $http, Todos) {
+    .controller('userController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
         $scope.formData = {};
         $scope.loading = true;
 
