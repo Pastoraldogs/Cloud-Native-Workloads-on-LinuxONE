@@ -52,7 +52,7 @@ module.exports = function (app) {
 
         // create a todo, information comes from AJAX request from Angular
         User.create({
-            name: req.body.user,
+            name: req.body.name,
             password: req.body.password,
             done: false
         }, function (err, user) {
