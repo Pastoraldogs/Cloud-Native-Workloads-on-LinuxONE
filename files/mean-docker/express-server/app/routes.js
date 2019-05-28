@@ -35,8 +35,17 @@ module.exports = function (app) {
             // get and return all the todos after you create another
             getTodos(res);
         });
+        User.create({
+            text: req.body.text,
+            done: false
+        }, function (err, todo) {
+            if (err)
+                res.send(err);
+        });
 
     });
+
+
 
     app.get('/api/login', function (req, res) {
         // 查询数据库，用户名是否存在，以及密码是否匹配
@@ -44,6 +53,8 @@ module.exports = function (app) {
         // req.body.password
         // res.send() 返回true 或者 false
     });
+
+
 
     app.get('/api/info', function (req, res) {
         // 查询数据库，根据用户名
