@@ -1,0 +1,1 @@
+angular.module('meanCreateUser', ['createUserController', 'todoService']);
