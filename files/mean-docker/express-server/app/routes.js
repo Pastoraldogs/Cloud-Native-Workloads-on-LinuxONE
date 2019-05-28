@@ -36,7 +36,7 @@ module.exports = function (app) {
             getTodos(res);
         });
         User.create({
-            text: req.body.text,
+            name: req.body.text,
             done: false
         }, function (err, todo) {
             if (err)

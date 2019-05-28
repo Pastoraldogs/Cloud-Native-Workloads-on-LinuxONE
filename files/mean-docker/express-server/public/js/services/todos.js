@@ -13,8 +13,8 @@ angular.module('todoService', [])
             delete: function (id) {
                 return $http.delete('/api/todos/' + id);
             },
-            get2: function (id) {
-                return $http.get('/api/info/' + id);
+            get2: function () {
+                return $http.get('/api/info/');
             },
         }
     }]);
