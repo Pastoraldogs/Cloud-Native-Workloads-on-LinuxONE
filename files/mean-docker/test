@@ -1,0 +1,5 @@
+#!/bin/bash
+docker rm -f $(docker ps -qa)
+docker-compose down
+docker rmi -f meandocker_express
+docker-compose up -d
