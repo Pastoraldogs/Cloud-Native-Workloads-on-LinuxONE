@@ -23,9 +23,10 @@ angular.module('userLoginController', [])
                         $scope.loading = false;
                         $scope.formData = {}; // clear the form so our user is ready to enter another
                         $scope.userData = data;
-                        if ($scope.userData.length !== 0)
+                        if ($scope.userData.length !== 0) {
+                            window.location.href = "http://baidu.com";
                             $scope.state = "登录成功"
-                        else
+                        } else
                             $scope.state = "登录失败"
                     });
 
