@@ -23,7 +23,7 @@ angular.module('userLoginController', [])
                         $scope.loading = false;
                         $scope.formData = {}; // clear the form so our user is ready to enter another
                         $scope.userData = data;
-                        if (userData !== {})
+                        if ($scope.userData !== {})
                             $scope.state = "登录成功"
                         else
                             $scope.state = "登录失败"
