@@ -2,7 +2,8 @@ angular.module('userLoginController', [])
 
     .controller('loginController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
         $scope.formData = {};
-        $scope.state = "未登录"
+        $scope.state = "未登录";
+        $scope.userData = {};
         $scope.loading = true;
 
         // CREATE ==================================================================
@@ -21,7 +22,11 @@ angular.module('userLoginController', [])
                     .success(function (data) {
                         $scope.loading = false;
                         $scope.formData = {}; // clear the form so our user is ready to enter another
-                        $scope.state = data;
+                        $scope.userData = data;
+                        if (userData !== {})
+                            $scope.state = "登录成功"
+                        else
+                            $scope.state = "登录失败"
                     });
 
             }
