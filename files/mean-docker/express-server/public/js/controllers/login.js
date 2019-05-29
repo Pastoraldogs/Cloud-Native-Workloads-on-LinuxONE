@@ -21,13 +21,13 @@ angular.module('userLoginController', [])
                     // if successful creation, call our get function to get all the new todos
                     .success(function (data) {
                         $scope.loading = false;
-                        $scope.formData = {}; // clear the form so our user is ready to enter another
                         $scope.userData = data;
                         if ($scope.userData.length !== 0) {
                             window.location.href = "./bank.html?name=" + $scope.formData.name + "&password=" + $scope.formData.password;
                             $scope.state = "登录成功"
                         } else
                             $scope.state = "登录失败"
+                        $scope.formData = {}; // clear the form so our user is ready to enter another
                     });
 
             }
