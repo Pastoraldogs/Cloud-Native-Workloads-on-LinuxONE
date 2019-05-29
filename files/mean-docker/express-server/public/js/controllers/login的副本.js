@@ -1,8 +1,8 @@
-angular.module('userLoginController', [])
-    //
-    .controller('loginController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
+angular.module('bankController', [])
+
+    .controller('bankUserController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
         $scope.formData = {};
-        $scope.state = "未登录";
+        $scope.state = window.location.search;
         $scope.userData = {};
         $scope.loading = true;
 
@@ -24,7 +24,7 @@ angular.module('userLoginController', [])
                         $scope.formData = {}; // clear the form so our user is ready to enter another
                         $scope.userData = data;
                         if ($scope.userData.length !== 0) {
-                            window.location.href = "./bank.html?name=" + $scope.formData.name + "&password=" + $scope.formData.password;
+                            window.location.href = "http://baidu.com";
                             $scope.state = "登录成功"
                         } else
                             $scope.state = "登录失败"

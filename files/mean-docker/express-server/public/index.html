@@ -1,97 +1,76 @@
-<!doctype html>
-
-<!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="meanTodo">
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="meanTodo">
 
 <head>
-    <!-- META -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Welcome</title>
 
-    <title>Node/Angular Todo App</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./static/index/bootstrap.css" rel="stylesheet">
 
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <!-- load bootstrap -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        html {
-            overflow-y: scroll;
-        }
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./static/index/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-        body {
-            padding-top: 50px;
-        }
+    <!-- Custom styles for this template -->
+    <link href="./static/index/cover.css" rel="stylesheet">
 
-        #todo-list {
-            margin-bottom: 30px;
-        }
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./static/index/ie-emulation-modes-warning.js"></script>
 
-        #todo-form {
-            margin-bottom: 50px;
-        }
-    </style>
-
-    <!-- SPELLS -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="./static/index/jquery.js"></script>
+    <script src="./static/index/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./static/index/ie10-viewport-bug-workaround.js"></script>
     <script src="//cdn.bootcss.com/angular.js/1.2.16/angular.min.js"></script><!-- load angular -->
 
     <script src="js/controllers/main.js"></script> <!-- load up our controller -->
     <script src="js/services/todos.js"></script> <!-- load our todo service -->
     <script src="js/core.js"></script> <!-- load our main application -->
-
 </head>
-<!-- SET THE CONTROLLER -->
 
 <body ng-controller="mainController">
-    <div class="container">
 
-        <!-- HEADER AND TODO COUNT -->
-        <div class="jumbotron text-center">
-            <h1>Hi let us make an app for banks<span class="label label-info">{{ todos.length }}</span></h1>
-        </div>
+    <div class="site-wrapper">
 
-        <!-- TODO LIST -->
-        <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
+        <div class="site-wrapper-inner">
 
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-                    </label>
-                </div>
-                <p class="text-center" ng-show="loading">
-                    <span class="fa fa-spinner fa-spin fa-3x"></span>
-                </p>
+            <div class="cover-container">
 
-            </div>
-        </div>
-
-        <!-- FORM TO CREATE TODOS -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form>
-                    <div class="form-group">
-
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="todo's go here"
-                            ng-model="formData.text">
-
-
-
-                        <input type="text" class="form-control " placeholder="todo's go here" ng-model="formData.value">
-
-
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <h3 class="masthead-brand">Bank</h3>
+                        <nav>
+                            <ul class="nav masthead-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="./login.html">login</a></li>
+                            </ul>
+                        </nav>
                     </div>
+                </div>
 
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-                </form>
+                <div class="inner cover">
+                    <h1 class="cover-heading">Welcome....</h1>
+                    <p class="lead">description .............................</p>
+                    <p class="lead">
+                        <a href="./login.html" class="btn btn-lg btn-default">Login</a>
+                    </p>
+                </div>
             </div>
+
         </div>
-        <div class="text-center text-muted">
-            <p>With ❤ from <a href="https://www.ibm.com/linuxone">LinuxONE</a></p>
-        </div>
+
     </div>
 </body>
 
