@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="app" ng-app="meanLogin">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="./static/login/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="./static/login/css/simple-line-icons.css" type="text/css" />
+    <link rel="stylesheet" href="./static/login/css/app.css" type="text/css" />
+    <link rel="stylesheet" href="./static/login/css/cover.css" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .divc {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            align-content: center;
+        }
+
+        .cen {
+            height: 100px;
+            line-height: 600%;
+            text-align: center;
+            text-align: center;
+            position: relative;
+            top: 20%;
+            left: 5%;
+
+        }
+    </style>
+    <script src="//cdn.bootcss.com/angular.js/1.2.16/angular.min.js"></script><!-- load angular -->
+
+    <script src="js/controllers/login.js"></script> <!-- load up our controller -->
+    <script src="js/services/todos.js"></script> <!-- load our todo service -->
+    <script src="js/coreLogin.js"></script> <!-- load our main application -->
+</head>
+
+<body background="images/bodybg.jpg" ng-controller="loginController">
+    <div class="divc">
+        <div class="cen" style="width:50%;float:left;">
+            <br />
+            <h1 class="cover-heading">Welcome to xxx Bank</h1>
+            <p class="lead">银行，是依法成立的经营货币信贷业务的金融机构，是商品货币经济发展到一定阶段的产物。
+                银行是金融机构之一，银行按类型分为：中央银行，政策性银行，商业银行，投资银行，世界银行，它们的职责各不相同。
+                中央银行：即中国人民银行是我国的中央银行。
+                国有政策性银行：包括中国进出口银行、中国农业发展银行</p>
+        </div>
+        <div class="cen" style="width:50%;float:left;">
+            <section id="content" class="m-t-lg wrapper-md animated fadeInUp ">
+                <div class="container aside-xl" style="margin-top: 48px;">
+                    <a class="navbar-brand block"><span class="h1 font-bold" style="color: #ffffff">Please
+                            Login</span></a>
+                    <section class="m-b-lg">
+                        <!-- need action -->
+                        <form action="javascript:;" method="post">
+                            <div class="form-group">
+                                <input type="username" name="username" placeholder="name"
+                                    class="form-control  input-lg text-center no-border" ng-model="formData.name">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" placeholder="passwd"
+                                    class="form-control  input-lg text-center no-border" ng-model="formData.password">
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block"
+                                id="validate-submit" ng-click="login()">
+                                <i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">登录</span></button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- footer -->
+</body>
+
+</html>
