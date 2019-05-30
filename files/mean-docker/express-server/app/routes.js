@@ -103,7 +103,7 @@ module.exports = function (app) {
                     password: req.body.password,
                 }, {
                     $set: {
-                        'balance': oldBalance + req.body.amount
+                        'balance': Number(oldBalance) + Number(req.body.amount)
                     }
                 }, function () {
                     User.find({
