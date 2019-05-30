@@ -8,13 +8,13 @@ angular.module('bankController', [])
         $scope.loading = true;
         $scope.products = [{
             id: 1,
-            name: '北京'
+            name: '理财产品A'
         }, {
             id: 2,
-            name: '上海'
+            name: '理财产品B'
         }, {
             id: 3,
-            name: '广州'
+            name: '理财产品C'
         }]
         var tempList = $scope.state.split("&")
         $scope.formData.name = tempList[0].split("=")[1]

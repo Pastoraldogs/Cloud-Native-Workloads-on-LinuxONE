@@ -76,7 +76,7 @@
 
                 <h2>理财产品</h2>
                 <select class="form-control" id="sel1" ng-model="formData.product"
-                    ng-options="x.name for x in products">
+                    ng-init="formData.product = products[0].name" ng-options="x.name for x in products">
                 </select>
 
                 <form>
