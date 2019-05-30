@@ -41,12 +41,10 @@
         <div class="row">
             <div class="col-sm-3">
                 <h2>用户信息</h2>
-                <p>用户ID:{{ formData.name }}</p>
-                <p>全部金额:{{ userData.balance+userData.financing }}</p>
-                <p>可用金额:{{ userData.balance}}</p>
-                <p>理财金额:{{ userData.financing}}</p>
-
-
+                <p>用户名: <span>{{ formData.name }}</span></p>
+                <p>全部金额: <span>{{ userData.balance+userData.financing }}</span></p>
+                <p>可用金额: <span>{{ userData.balance}}</span></p>
+                <p>理财金额: <span>{{ userData.financing}}</span></p>
                 <hr class="d-sm-none">
             </div>
             <div class="col-sm-3">
@@ -92,10 +90,11 @@
                             <span class="input-group-text">投资金额</span>
 
                         </div>
-                        <input type="text" class="form-control" style="width:40px;padding:7px">
+                        <input type="text" class="form-control" style="width:40px;padding:7px"
+                            ng-model="formData.amount">
                     </div>
                 </form>
-                <button class="btn button btn-primary" type="submit">确定</button>
+                <button class="btn button btn-primary" type="submit" ng-click="buy()">确定</button>
 
             </div>
 
