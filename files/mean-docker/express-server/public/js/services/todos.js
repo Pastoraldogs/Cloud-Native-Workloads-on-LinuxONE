@@ -24,7 +24,9 @@ angular.module('todoService', [])
             },
             deposit: function (userData) {
                 return $http.post('/api/deposit', userData);
-
+            },
+            withdraw: function (userData) {
+                return $http.post('/api/withdraw', userData);
             }
         }
     }]);

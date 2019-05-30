@@ -83,6 +83,26 @@
                 </form>
             </div>
         </div>
+
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <input type="text" class="form-control input-lg text-center" placeholder="金额"
+                            ng-model="formData.amount">
+
+                    </div>
+
+                    <!-- createUser() WILL CREATE NEW USER -->
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="withdraw()">取钱</button>
+                </form>
+            </div>
+        </div>
+
+
+
     </div>
 </body>
 

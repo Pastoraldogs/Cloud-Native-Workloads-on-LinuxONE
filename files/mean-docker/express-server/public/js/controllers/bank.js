@@ -28,6 +28,19 @@ angular.module('bankController', [])
                     .success(function (data) {
                         $scope.loading = false;
                         $scope.userData = data[0];
+                        $scope.formData.amount = 0
+                    });
+            }
+        };
+
+        $scope.withdraw = function () {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined) {
+                $scope.loading = true;
+                Services.deposit($scope.formData)
+                    .success(function (data) {
+                        $scope.loading = false;
+                        $scope.userData = data[0];
+                        $scope.formData.amount
                     });
             }
         };

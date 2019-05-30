@@ -97,13 +97,16 @@ module.exports = function (app) {
             password: req.body.password,
         }, function (err, user1) {
             if (user1.length != 0) {
-                let oldBalance = user1[0].balance
+                let oldBalance = Number(user1[0].balance)
+                let amount = Number(req.body.amount)
+                if (amount < 0)
+                    amount = 0
                 User.update({
                     name: req.body.name,
                     password: req.body.password,
                 }, {
                     $set: {
-                        'balance': Number(oldBalance) + Number(req.body.amount)
+                        'balance': oldBalance + amount
                     }
                 }, function () {
                     User.find({
@@ -121,6 +124,35 @@ module.exports = function (app) {
     app.post('/api/withdraw', function (req, res) {
         // 取钱
         // req.body.amount
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user1) {
+            if (user1.length != 0) {
+                let oldBalance = Number(user1[0].balance)
+                let amount = Number(req.body.amount)
+                if (amount < 0)
+                    amount = 0
+                if (amount === oldBalance)
+                    amount
+                User.update({
+                    name: req.body.name,
+                    password: req.body.password,
+                }, {
+                    $set: {
+                        'balance': oldBalance - amount
+                    }
+                }, function () {
+                    User.find({
+                            name: req.body.name,
+                            password: req.body.password,
+                        },
+                        function (err, user2) {
+                            res.json(user2)
+                        })
+                })
+            }
+        });
     })
 
     app.post('/api/buy', function (req, res) {
