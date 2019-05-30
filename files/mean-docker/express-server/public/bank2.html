@@ -75,7 +75,8 @@
             <div class="col-sm-4">
 
                 <h2>理财产品</h2>
-                <select class="form-control" id="sel1" ng-model="formData.product" ng-options="x for x in products">
+                <select class="form-control" id="sel1" ng-model="formData.product"
+                    ng-options="x.name for x in products">
                 </select>
 
                 <form>

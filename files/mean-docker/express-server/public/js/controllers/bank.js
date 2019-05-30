@@ -6,7 +6,16 @@ angular.module('bankController', [])
         $scope.existUser = false
         $scope.userData = {};
         $scope.loading = true;
-        $scope.products = ['A.年利率XX', 'B.年利率XX', 'C.年利率XX', 'D.年利率XX']
+        $scope.products = [{
+            id: 1,
+            name: '北京'
+        }, {
+            id: 2,
+            name: '上海'
+        }, {
+            id: 3,
+            name: '广州'
+        }]
         var tempList = $scope.state.split("&")
         $scope.formData.name = tempList[0].split("=")[1]
         $scope.formData.password = tempList[1].split("=")[1]
