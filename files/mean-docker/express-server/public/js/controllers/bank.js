@@ -6,8 +6,8 @@ angular.module('bankController', [])
         $scope.userData = {};
         $scope.loading = true;
         var tempList = $scope.state.split("&")
-        formData.name = tempList[0].split("=")[1]
-        formData.password = tempList[1].split("=")[1]
+        $scope.formData.name = tempList[0].split("=")[1]
+        $scope.formData.password = tempList[1].split("=")[1]
 
         // CREATE ==================================================================
         // when submitting the add form, send the text to the node API
