@@ -182,21 +182,23 @@ module.exports = function (app) {
                                 'balance': oldBalance1 - amount
                             }
                         }, function () {
-                            User.find({
-                                    name: req.body.name,
-                                    password: req.body.password,
-                                },
-                                function (err, user2) {
-                                    res.json(user2)
-                                })
+                            User.update({
+                                name: req.body.receiver,
+                            }, {
+                                $set: {
+                                    'balance': oldBalance2 + amount
+                                }
+                            }, function () {
+                                User.find({
+                                        name: req.body.name,
+                                        password: req.body.password,
+                                    },
+                                    function (err, user2) {
+                                        res.json(user2)
+                                    })
+                            })
                         });
-                        User.update({
-                            name: req.body.receiver,
-                        }, {
-                            $set: {
-                                'balance': oldBalance2 + amount
-                            }
-                        })
+
                     }
                 })
             }
