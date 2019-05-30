@@ -179,27 +179,26 @@ module.exports = function (app) {
                 var time = new Date().getTime();
                 var financing = Number(user1.financing)
                 var amount = Number(req.body.amount)
-                BuyRecord.create({
+                User.update({
                     name: req.body.name,
-                    product: req.body.product,
-                    amount: amount,
-                    time: time,
-                    done: false
+                }, {
+                    $set: {
+                        'financing': financing + amount
+                    }
                 }, function () {
-                    User.update({
-                        name: req.body.name,
-                    }, {
-                        $set: {
-                            'financing': financing + amount
-                        }
-                    }, function () {
-                        User.find({
+                    User.find({
+                            name: req.body.name,
+                        },
+                        function (err, user2) {
+                            res.json(user2)
+                            BuyRecord.create({
                                 name: req.body.name,
-                            },
-                            function (err, user2) {
-                                res.json(user2)
+                                product: req.body.product,
+                                amount: amount,
+                                time: time,
+                                done: false
                             })
-                    })
+                        })
                 })
             }
         })
