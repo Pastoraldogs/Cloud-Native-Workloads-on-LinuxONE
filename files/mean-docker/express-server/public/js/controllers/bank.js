@@ -40,7 +40,7 @@ angular.module('bankController', [])
                     .success(function (data) {
                         $scope.loading = false;
                         $scope.userData = data[0];
-                        $scope.formData.amount
+                        $scope.formData.amount = 0
                     });
             }
         };
