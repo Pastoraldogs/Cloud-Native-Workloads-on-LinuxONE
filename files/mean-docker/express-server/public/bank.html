@@ -47,35 +47,24 @@
 
         <!-- HEADER AND TODO COUNT -->
         <div class="jumbotron text-center">
-            <h1>传递参数<span class="label label-info">{{ formData }}</span></h1>
+            <h1>访问用户<span class="label label-info">{{ formData }}</span></h1>
         </div>
         <div class="jumbotron text-center">
-            <h1>传递参数<span class="label label-info">{{ formData.name }}</span></h1>
+            <h1>用户名<span class="label label-info">{{ formData.name }}</span></h1>
         </div>
         <div class="jumbotron text-center">
-            <h1>传递参数<span class="label label-info">{{ formData.password }}</span></h1>
+            <h1>密码<span class="label label-info">{{ formData.password }}</span></h1>
         </div>
         <div class="jumbotron text-center">
-            <h1>传递参数<span class="label label-info">{{ userData }}</span></h1>
+            <h1>总余额<span class="label label-info">{{ userData.balance+userData.financing }}元</span></h1>
+        </div>
+        <div class="jumbotron text-center">
+            <h1>可用余额<span class="label label-info">{{ userData.balance }}元</span></h1>
+        </div>
+        <div class="jumbotron text-center">
+            <h1>理财金额<span class="label label-info">{{ userData.financing }}元</span></h1>
         </div>
 
-        <!-- TODO LIST -->
-        <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="user in users">
-                    <label>
-                        <input type="checkbox"> {{ user }}
-                    </label>
-                </div>
-
-                <p class="text-center" ng-show="loading">
-                    <span class="fa fa-spinner fa-spin fa-3x"></span>
-                </p>
-
-            </div>
-        </div>
 
         <!-- FORM TO CREATE TODOS -->
         <div id="todo-form" class="row">
@@ -84,18 +73,13 @@
                     <div class="form-group">
 
                         <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="user"
-                            ng-model="formData.name">
-
-
-
-                        <input type="text" class="form-control " placeholder="password" ng-model="formData.password">
-
+                        <input type="text" class="form-control input-lg text-center" placeholder="金额"
+                            ng-model="formData.amount">
 
                     </div>
 
                     <!-- createUser() WILL CREATE NEW USER -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createUser()">Add</button>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="deposit()">存钱</button>
                 </form>
             </div>
         </div>

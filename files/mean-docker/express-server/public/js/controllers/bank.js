@@ -3,6 +3,7 @@ angular.module('bankController', [])
     .controller('bankUserController', ['$scope', '$http', 'Services', function ($scope, $http, Services) {
         $scope.formData = {};
         $scope.state = window.location.search;
+        $scope.existUser = false
         $scope.userData = {};
         $scope.loading = true;
         var tempList = $scope.state.split("&")
@@ -14,18 +15,17 @@ angular.module('bankController', [])
                 $scope.loading = false;
                 $scope.userData = data;
                 if ($scope.userData.length !== 0) {
-                    window.location.href = "http://baidu.com";
-                    $scope.state = "登录成功"
+                    $scope.existUser = true
                 } else
-                    $scope.state = "登录失败"
+                    $scope.existUser = false
             });
         // CREATE ==================================================================
         // when submitting the add form, send the text to the node API
-        $scope.login = function () {
+        $scope.deposit = function () {
 
             // validate the formData to make sure that something is there
             // if form is empty, nothing will happen
-            if ($scope.formData.name != undefined && $scope.formData.password != undefined) {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined) {
                 $scope.loading = true;
 
                 // call the create function from our service (returns a promise object)

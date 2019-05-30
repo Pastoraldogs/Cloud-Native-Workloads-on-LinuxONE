@@ -92,6 +92,30 @@ module.exports = function (app) {
     app.post('/api/deposit', function (req, res) {
         // 存钱
         // req.body.amount
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user1) {
+            if (user1.length != 0) {
+                let oldBalance = user1[0].balance
+                User.update({
+                    name: req.body.name,
+                    password: req.body.password,
+                }, {
+                    $set: {
+                        'balance': oldBalance + req.body.amount
+                    }
+                }, function () {
+                    User.find({
+                            name: req.body.name,
+                            password: req.body.password,
+                        },
+                        function (err, user2) {
+                            res.json(user2)
+                        })
+                })
+            }
+        });
     })
 
     app.post('/api/withdraw', function (req, res) {
