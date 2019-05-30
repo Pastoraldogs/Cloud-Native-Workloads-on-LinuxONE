@@ -133,8 +133,8 @@ module.exports = function (app) {
                 let amount = Number(req.body.amount)
                 if (amount < 0)
                     amount = 0
-                if (amount === oldBalance)
-                    amount
+                if (amount >= oldBalance)
+                    amount = oldBalance
                 User.update({
                     name: req.body.name,
                     password: req.body.password,
