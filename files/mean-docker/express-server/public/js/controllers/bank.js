@@ -6,6 +6,7 @@ angular.module('bankController', [])
         $scope.existUser = false
         $scope.userData = {};
         $scope.loading = true;
+        $scope.lproducts = ['A.年利率XX', 'B.年利率XX', 'C.年利率XX', 'D.年利率XX']
         var tempList = $scope.state.split("&")
         $scope.formData.name = tempList[0].split("=")[1]
         $scope.formData.password = tempList[1].split("=")[1]
@@ -59,7 +60,6 @@ angular.module('bankController', [])
         $scope.buy = function () {
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "" && $scope.formData.product != undefined && $scope.formData.product !== "") {
                 $scope.loading = true;
-                $scope.formData.product = $("#form-control option:selected").text();
                 Services.buy($scope.formData)
                     .success(function (data) {
                         $scope.loading = false;

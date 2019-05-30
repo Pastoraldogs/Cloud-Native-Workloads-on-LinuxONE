@@ -75,14 +75,8 @@
             <div class="col-sm-4">
 
                 <h2>理财产品</h2>
-                <select class="form-control" id="sel1">
-                    <option>A.年利率XX</option>
-                    <option>B.年利率XX</option>
-                    <option>C.年利率XX</option>
-                    <option>D.年利率XX</option>
+                <select class="form-control" id="sel1" ng-model="formData.product" ng-options="x for x in products">
                 </select>
-
-                <br /><br />
 
                 <form>
                     <div class="input-group mb-4">
