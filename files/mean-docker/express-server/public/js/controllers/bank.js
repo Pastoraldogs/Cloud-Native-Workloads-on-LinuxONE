@@ -36,7 +36,7 @@ angular.module('bankController', [])
         $scope.withdraw = function () {
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined) {
                 $scope.loading = true;
-                Services.deposit($scope.formData)
+                Services.withdraw($scope.formData)
                     .success(function (data) {
                         $scope.loading = false;
                         $scope.userData = data[0];
