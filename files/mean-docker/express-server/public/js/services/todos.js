@@ -29,7 +29,7 @@ angular.module('todoService', [])
                 return $http.post('/api/withdraw', userData);
             },
             transfer: function (userData) {
-                return $http.post('/api/withdraw', userData);
+                return $http.post('/api/transfer', userData);
             }
         }
     }]);
