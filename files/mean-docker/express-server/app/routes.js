@@ -177,15 +177,14 @@ module.exports = function (app) {
         }, function (err, user1) {
             if (user1.length != 0) {
                 var time = new Date().getTime();
-                var financing = Number(user1.financing)
+                var finance = Number(user1.financing)
                 var amount = Number(req.body.amount)
-                User.save({
+                User.update({
                     name: req.body.name,
-                    financing: financing + amount
-                    //}, {
-                    //$set: {
-                    //'financing': financing + amount
-                    //}
+                }, {
+                    $set: {
+                        'financing': finance + amount
+                    }
                 }, function () {
                     User.find({
                             name: req.body.name,
