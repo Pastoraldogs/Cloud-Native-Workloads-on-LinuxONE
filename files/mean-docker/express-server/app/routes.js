@@ -178,7 +178,7 @@ module.exports = function (app) {
             if (user1.length != 0) {
                 var time = new Date().getTime();
                 var financing = Number(user1.financing)
-                var amount = Number(user1.amount)
+                var amount = Number(req.body.amount)
                 BuyRecord.create({
                     name: req.body.name,
                     product: req.body.product,
