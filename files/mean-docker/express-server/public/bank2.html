@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meanBank">
+
+<head>
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script src="js/controllers/bank.js"></script> <!-- load up our controller -->
+    <script src="js/services/todos.js"></script> <!-- load our todo service -->
+    <script src="js/coreBank.js"></script> <!-- load our main application -->
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #B0E2FF;
+        }
+    </style>
+</head>
+
+<body ng-controller="bankUserController">
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <div class="fakeimg">
+            <img src>
+            <h1>(这里肯定还得美化一下)欢迎使用XX银行管理系统<h1>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">导航</a>
+
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+            <div class="col-sm-3">
+                <h2>用户信息</h2>
+                <p>用户ID:{{ formData.name }}</p>
+                <p>全部金额:{{ userData.balance+userData.financing }}</p>
+                <p>可用金额:{{ userData.balance}}</p>
+                <p>理财金额:{{ userData.financing}}</p>
+
+
+                <hr class="d-sm-none">
+            </div>
+            <div class="col-sm-3">
+
+                <h2>转账</h2>
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">转账对象</span>
+                        </div>
+                        <input type="text" class="form-control" ng-model="formData.receiver">
+                    </div>
+                </form>
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">转账金额</span>
+
+                        </div>
+                        <input type="text" class="form-control" ng-model="formData.amount">
+                    </div>
+                </form>
+                <button class="btn button btn-primary" type="submit" ng-click="transfer()">转账</button>
+            </div>
+            <div class="col-sm-1">
+                <br> <br>
+            </div>
+            <div class="col-sm-4">
+
+                <h2>理财产品</h2>
+                <select class="form-control" id="sel1">
+                    <option>A.年利率XX</option>
+                    <option>B.年利率XX</option>
+                    <option>C.年利率XX</option>
+                    <option>D.年利率XX</option>
+                </select>
+
+                <br /><br />
+
+                <form>
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">投资金额</span>
+
+                        </div>
+                        <input type="text" class="form-control" style="width:40px;padding:7px">
+                    </div>
+                </form>
+                <button class="btn button btn-primary" type="submit">确定</button>
+
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>底部内容</p>
+    </div>
+
+</body>
+
+</html>

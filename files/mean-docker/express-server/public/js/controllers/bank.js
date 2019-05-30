@@ -59,6 +59,7 @@ angular.module('bankController', [])
         $scope.buy = function () {
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "" && $scope.formData.product != undefined && $scope.formData.product !== "") {
                 $scope.loading = true;
+                $scope.formData.product = $("#form-control option:selected").text();
                 Services.buy($scope.formData)
                     .success(function (data) {
                         $scope.loading = false;
