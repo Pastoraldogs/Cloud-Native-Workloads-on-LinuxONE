@@ -4,15 +4,6 @@ angular.module('todoService', [])
     // each function returns a promise object
     .factory('Services', ['$http', function ($http) {
         return {
-            get: function () {
-                return $http.get('/api/todos');
-            },
-            create: function (todoData) {
-                return $http.post('/api/todos', todoData);
-            },
-            delete: function (id) {
-                return $http.delete('/api/todos/' + id);
-            },
             getUser: function () {
                 return $http.get('/api/info/');
             },
@@ -30,6 +21,9 @@ angular.module('todoService', [])
             },
             transfer: function (userData) {
                 return $http.post('/api/transfer', userData);
+            },
+            buy: function (userData) {
+                return $http.post('/api/buy', userData);
             }
         }
     }]);

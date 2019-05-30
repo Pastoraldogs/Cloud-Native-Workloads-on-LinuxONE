@@ -104,7 +104,19 @@
             </div>
         </div>
 
-
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="理财产品"
+                            ng-model="formData.product">
+                        <input type="text" class="form-control input-lg text-center" placeholder="金额"
+                            ng-model="formData.amount">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="buy()">购买</button>
+                </form>
+            </div>
+        </div>
 
     </div>
 </body>

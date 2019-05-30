@@ -10,7 +10,6 @@ angular.module('bankController', [])
         $scope.formData.name = tempList[0].split("=")[1]
         $scope.formData.password = tempList[1].split("=")[1]
         Services.login($scope.formData)
-            // if successful creation, call our get function to get all the new todos
             .success(function (data) {
                 $scope.loading = false;
                 $scope.userData = data[0];
@@ -19,10 +18,9 @@ angular.module('bankController', [])
                 } else
                     $scope.existUser = false
             });
-        // CREATE ==================================================================
-        // when submitting the add form, send the text to the node API
+
         $scope.deposit = function () {
-            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined) {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "") {
                 $scope.loading = true;
                 Services.deposit($scope.formData)
                     .success(function (data) {
@@ -46,7 +44,7 @@ angular.module('bankController', [])
         };
 
         $scope.transfer = function () {
-            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.receiver != undefined && $scope.formData.receiver !== "") {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "" && $scope.formData.receiver != undefined && $scope.formData.receiver !== "") {
                 $scope.loading = true;
                 Services.transfer($scope.formData)
                     .success(function (data) {
@@ -54,6 +52,19 @@ angular.module('bankController', [])
                         $scope.userData = data[0];
                         $scope.formData.amount = 0
                         $scope.formData.receiver = ""
+                    });
+            }
+        };
+
+        $scope.buy = function () {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "" && $scope.formData.product != undefined && $scope.formData.product !== "") {
+                $scope.loading = true;
+                Services.buy($scope.formData)
+                    .success(function (data) {
+                        $scope.loading = false;
+                        $scope.userData = data[0];
+                        $scope.formData.amount = 0
+                        $scope.formData.product = ""
                     });
             }
         };

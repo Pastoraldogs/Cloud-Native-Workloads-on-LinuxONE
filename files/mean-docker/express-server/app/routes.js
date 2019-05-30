@@ -1,15 +1,5 @@
-var Todo = require('./models/todo');
+var BuyRecord = require('./models/buyRecord');
 var User = require('./models/user')
-
-function getTodos(res) {
-    Todo.find(function (err, todos) {
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err) {
-            res.send(err);
-        }
-        res.json(todos); // return all todos in JSON format
-    });
-};
 
 function getUsers(res) {
     User.find(function (err, users) {
@@ -24,33 +14,8 @@ function getUsers(res) {
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
-    // get all todos
-    app.get('/api/todos', function (req, res) {
-        // use mongoose to get all todos in the database
-        getTodos(res);
-    });
-
-    // create todo and send back all todos after creation
-    app.post('/api/todos', function (req, res) {
-
-        // create a todo, information comes from AJAX request from Angular
-        Todo.create({
-            text: req.body.text,
-            value: req.body.value,
-            done: false
-        }, function (err, todo) {
-            if (err)
-                res.send(err);
-
-            // get and return all the todos after you create another
-            getTodos(res);
-        })
-
-    });
-
     app.post('/api/createUser', function (req, res) {
-
-        // create a todo, information comes from AJAX request from Angular
+        // create a User, information comes from AJAX request from Angular
         User.create({
             name: req.body.name,
             password: req.body.password,
@@ -64,7 +29,6 @@ module.exports = function (app) {
     });
 
     app.post('/api/login', function (req, res) {
-        // create a todo, information comes from AJAX request from Angular
         User.find({
             name: req.body.name,
             password: req.body.password,
@@ -207,26 +171,45 @@ module.exports = function (app) {
 
     app.post('/api/buy', function (req, res) {
         // 购买理财产品
-
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user1) {
+            if (user1.length != 0) {
+                var time = new Date().getTime();
+                var financing = Number(user1.financing)
+                var amount = Number(user1.amount)
+                BuyRecord.create({
+                    name: req.body.name,
+                    product: req.body.product,
+                    amount: amount,
+                    time: time,
+                    done: false
+                }, function () {
+                    User.update({
+                        name: req.body.name,
+                    }, {
+                        $set: {
+                            'financing': financing + amount
+                        }
+                    }, function () {
+                        User.find({
+                                name: req.body.name,
+                            },
+                            function (err, user2) {
+                                res.json(user2)
+                            })
+                    })
+                })
+            }
+        })
     })
 
 
 
-    // delete a todo
-    app.delete('/api/todos/:todo_id', function (req, res) {
-        Todo.remove({
-            _id: req.params.todo_id
-        }, function (err, todo) {
-            if (err)
-                res.send(err);
-
-            getTodos(res);
-        });
-    });
-
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {
-        res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+        res.sendFile(__dirname + '/public/index.html');
     });
 };
