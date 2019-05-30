@@ -13,7 +13,7 @@ angular.module('bankController', [])
             // if successful creation, call our get function to get all the new todos
             .success(function (data) {
                 $scope.loading = false;
-                $scope.userData = data;
+                $scope.userData = data[0];
                 if ($scope.userData.length !== 0) {
                     $scope.existUser = true
                 } else
@@ -22,28 +22,13 @@ angular.module('bankController', [])
         // CREATE ==================================================================
         // when submitting the add form, send the text to the node API
         $scope.deposit = function () {
-
-            // validate the formData to make sure that something is there
-            // if form is empty, nothing will happen
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined) {
                 $scope.loading = true;
-
-                // call the create function from our service (returns a promise object)
-                Services.login($scope.formData)
-
-                    // if successful creation, call our get function to get all the new todos
+                Services.deposit($scope.formData)
                     .success(function (data) {
                         $scope.loading = false;
-                        $scope.formData = {}; // clear the form so our user is ready to enter another
-                        $scope.userData = data;
-                        if ($scope.userData.length !== 0) {
-                            window.location.href = "http://baidu.com";
-                            $scope.state = "登录成功"
-                        } else
-                            $scope.state = "登录失败"
+                        $scope.userData = data[0];
                     });
-
             }
-
         };
     }]);

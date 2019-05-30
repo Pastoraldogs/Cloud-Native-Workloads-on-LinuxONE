@@ -22,7 +22,7 @@ angular.module('todoService', [])
             login: function (userData) {
                 return $http.post('/api/login', userData);
             },
-            deposit: function () {
+            deposit: function (userData) {
                 return $http.post('/api/deposit', userData);
 
             }
