@@ -152,6 +152,54 @@ module.exports = function (app) {
                         })
                 })
             }
+
+        });
+    })
+
+    app.post('/api/transfer', function (req, res) {
+        // 转账
+        // req.body.amount
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user1) {
+            if (user1.length != 0) {
+                User.find({
+                    name: req.body.receiver,
+                }, function (err, user2) {
+                    if (user2.length != 0) {
+                        var oldBalance1 = Number(user1[0].balance)
+                        var oldBalance2 = Number(user2[0].balance)
+                        let amount = Number(req.body.amount)
+                        if (amount < 0)
+                            amount = 0
+                        if (amount >= oldBalance1)
+                            amount = oldBalance1
+                    }
+                })
+                User.update({
+                    name: req.body.name,
+                }, {
+                    $set: {
+                        'balance': oldBalance1 - amount
+                    }
+                }, function () {
+                    User.find({
+                            name: req.body.name,
+                            password: req.body.password,
+                        },
+                        function (err, user2) {
+                            res.json(user2)
+                        })
+                })
+                User.update({
+                    name: req.body.receiver,
+                }, {
+                    $set: {
+                        'balance': oldBalance2 + amount
+                    }
+                })
+            }
         });
     })
 

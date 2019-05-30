@@ -44,4 +44,17 @@ angular.module('bankController', [])
                     });
             }
         };
+
+        $scope.transfer = function () {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.receiver != undefined && $scope.formData.receiver !== "") {
+                $scope.loading = true;
+                Services.transfer($scope.formData)
+                    .success(function (data) {
+                        $scope.loading = false;
+                        $scope.userData = data[0];
+                        $scope.formData.amount = 0
+                        $scope.formData.receiver = ""
+                    });
+            }
+        };
     }]);

@@ -27,6 +27,9 @@ angular.module('todoService', [])
             },
             withdraw: function (userData) {
                 return $http.post('/api/withdraw', userData);
+            },
+            transfer: function (userData) {
+                return $http.post('/api/withdraw', userData);
             }
         }
     }]);
