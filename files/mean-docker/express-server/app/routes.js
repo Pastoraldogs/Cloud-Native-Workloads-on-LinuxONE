@@ -177,7 +177,7 @@ module.exports = function (app) {
         }, function (err, user1) {
             if (user1.length != 0) {
                 var time = new Date().getTime();
-                var finance = Number(user1.financing)
+                var finance = Number(user1[0].financing)
                 var amount = Number(req.body.amount)
                 User.update({
                     name: req.body.name,
