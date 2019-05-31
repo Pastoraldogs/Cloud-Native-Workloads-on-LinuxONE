@@ -206,7 +206,6 @@ module.exports = function (app) {
                     product: req.body.product,
                     amount: amount,
                     time: time,
-                    done: false
                 }, function () {
                     BuyRecord.find({
                         name: req.body.name
