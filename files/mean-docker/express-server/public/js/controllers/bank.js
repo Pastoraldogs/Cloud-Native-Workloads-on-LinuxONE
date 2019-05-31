@@ -76,13 +76,12 @@ angular.module('bankController', [])
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "" && $scope.formData.product != undefined && $scope.formData.product !== "") {
                 $scope.loading = true;
                 Services.buy1($scope.formData)
-                    .success(function (data) {
-                        $scope.loading = false;
-                        $scope.userData = data[0];
+                    .success(function (data1) {
+                        $scope.userData = data1[0];
                         Services.buy2($scope.formData)
-                            .success(function (data) {
+                            .success(function (data2) {
                                 $scope.loading = false;
-                                $scope.lbuyRec = data
+                                $scope.buyRec = data2
                                 $scope.formData.amount = 0
                                 $scope.formData.product = ""
                             });

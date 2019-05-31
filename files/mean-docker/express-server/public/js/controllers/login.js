@@ -23,7 +23,7 @@ angular.module('userLoginController', [])
                         $scope.loading = false;
                         $scope.userData = data;
                         if ($scope.userData.length !== 0) {
-                            window.location.href = "./bank.html?name=" + $scope.formData.name + "&password=" + $scope.formData.password;
+                            window.location.href = "./bank2.html?name=" + $scope.formData.name + "&password=" + $scope.formData.password;
                             $scope.state = "登录成功"
                         } else
                             $scope.state = "登录失败"
