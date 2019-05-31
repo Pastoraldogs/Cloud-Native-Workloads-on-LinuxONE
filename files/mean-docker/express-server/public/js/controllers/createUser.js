@@ -25,6 +25,7 @@ angular.module('createUserController', [])
                             $scope.loading = false;
                             $scope.formData = {}; // clear the form so our user is ready to enter another
                             $scope.users = data; // assign our new list of todos
+                            window.location.href = "./login.html"
                         });
                 } else alert("两次密码必须一致")
             } else alert("请完善信息")
