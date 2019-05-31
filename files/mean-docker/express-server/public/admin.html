@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meanCreateUser">
+
+<head>
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/angular.js/1.2.16/angular.min.js"></script><!-- load angular -->
+    <script src="js/controllers/createUser.js"></script> <!-- load up our controller -->
+    <script src="js/services/todos.js"></script> <!-- load our todo service -->
+    <script src="js/coreUser.js"></script> <!-- load our main application -->
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body ng-controller="userController">
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <div class="fakeimg">
+            <img src>
+            <h1 class="font-weight-bold">XX银行管理系统管理员界面<h1>
+        </div>
+
+    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">导航</a>
+        </div>
+    </nav>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>总金额</th>
+                <th>可用金额</th>
+                <th>理财金额</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="user in users">
+            <tr>
+                <td><span>{{ user.name }}</span></td>
+                <td><span>{{ user.balance+user.financing }}</td>
+                <td><span>{{ user.balance}}</td>
+                <td><span>{{ user.financing}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+
+    </div>
+    </div>
+
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>底部内容</p>
+    </div>
+
+</body>
+
+</html>

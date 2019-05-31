@@ -3,19 +3,16 @@ var User = require('./models/user')
 
 function getUsers(res) {
     User.find(function (err, users) {
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
         }
-        res.json(users); // return all todos in JSON format
+        res.json(users);
     });
 };
 
 module.exports = function (app) {
-
     // api ---------------------------------------------------------------------
     app.post('/api/createUser', function (req, res) {
-        // create a User, information comes from AJAX request from Angular
         User.create({
             name: req.body.name,
             password: req.body.password,
@@ -203,8 +200,6 @@ module.exports = function (app) {
             }
         })
     })
-
-
 
 
     // application -------------------------------------------------------------
