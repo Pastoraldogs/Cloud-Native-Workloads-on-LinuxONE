@@ -221,14 +221,21 @@ module.exports = function (app) {
     })
 
     app.get('/api/buyRecord', function (req, res) {
-        BuyRecord.find({
-            name: req.body.name
-        }, function (err, records) {
-            if (err) {
-                res.send(err);
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user1) {
+            if (user1.length != 0) {
+                BuyRecord.find({
+                    name: req.body.name
+                }, function (err, records) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.json(records);
+                });
             }
-            res.json(records); // return all todos in JSON format
-        });
+        })
     })
 
     // application -------------------------------------------------------------
