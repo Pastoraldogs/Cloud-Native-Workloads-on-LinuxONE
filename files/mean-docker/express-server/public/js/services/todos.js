@@ -22,8 +22,11 @@ angular.module('todoService', [])
             transfer: function (userData) {
                 return $http.post('/api/transfer', userData);
             },
-            buy: function (userData) {
-                return $http.post('/api/buy', userData);
+            buy1: function (userData) {
+                return $http.post('/api/buy1', userData);
+            },
+            buy2: function (userData) {
+                return $http.post('/api/buy2', userData);
             },
             getBuyRecord: function (userData) {
                 return $http.post('/api/buyRecord', userData);
