@@ -166,7 +166,7 @@ module.exports = function (app) {
         });
     })
 
-    app.post('/api/buy', function (req, res) {
+    app.post('/api/buy1', function (req, res) {
         // 购买理财产品
         User.find({
             name: req.body.name,
@@ -187,16 +187,34 @@ module.exports = function (app) {
                             name: req.body.name,
                         },
                         function (err, user2) {
-                            BuyRecord.create({
-                                name: req.body.name,
-                                product: req.body.product,
-                                amount: amount,
-                                time: time,
-                                done: false
-                            }, function () {
-                                res.json(user2)
-                            })
+                            res.json(user2)
                         })
+                })
+            }
+        })
+    })
+
+    app.post('/api/buy2', function (req, res) {
+        User.find({
+            name: req.body.name,
+            password: req.body.password,
+        }, function (err, user1) {
+            if (user1.length != 0) {
+                BuyRecord.create({
+                    name: req.body.name,
+                    product: req.body.product,
+                    amount: amount,
+                    time: time,
+                    done: false
+                }, function () {
+                    BuyRecord.find({
+                        name: req.body.name
+                    }, function (err, records) {
+                        if (err) {
+                            res.send(err);
+                        }
+                        res.json(records);
+                    });
                 })
             }
         })
