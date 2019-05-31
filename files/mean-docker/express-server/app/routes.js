@@ -173,7 +173,6 @@ module.exports = function (app) {
             password: req.body.password,
         }, function (err, user1) {
             if (user1.length != 0) {
-                var time = new Date().getTime();
                 var finance = Number(user1[0].financing)
                 var amount = Number(req.body.amount)
                 User.update({
@@ -199,6 +198,8 @@ module.exports = function (app) {
             name: req.body.name,
             password: req.body.password,
         }, function (err, user1) {
+            var time = new Date().getTime();
+            var amount = Number(req.body.amount)
             if (user1.length != 0) {
                 BuyRecord.create({
                     name: req.body.name,
