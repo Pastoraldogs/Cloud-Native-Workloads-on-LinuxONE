@@ -24,6 +24,9 @@ angular.module('todoService', [])
             },
             buy: function (userData) {
                 return $http.post('/api/buy', userData);
-            }
+            },
+            getBuyRecord: function (userData) {
+                return $http.post('/api/buyRecord', userData);
+            },
         }
     }]);

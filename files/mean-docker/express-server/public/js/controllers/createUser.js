@@ -16,23 +16,19 @@ angular.module('createUserController', [])
         // CREATE ==================================================================
         // when submitting the add form, send the text to the node API
         $scope.createUser = function () {
-
             // validate the formData to make sure that something is there
             // if form is empty, nothing will happen
-            if ($scope.formData.name != undefined && $scope.formData.password != undefined) {
+            if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.password2 != undefined) {
                 $scope.loading = true;
-
-                // call the create function from our service (returns a promise object)
-                Services.createUser($scope.formData)
-
-                    // if successful creation, call our get function to get all the new todos
-                    .success(function (data) {
-                        $scope.loading = false;
-                        $scope.formData = {}; // clear the form so our user is ready to enter another
-                        $scope.users = data; // assign our new list of todos
-                    });
-
+                if ($scope.formData.password === $scope.formData.password2) {
+                    Services.createUser($scope.formData)
+                        // if successful creation, call our get function to get all the new todos
+                        .success(function (data) {
+                            $scope.loading = false;
+                            $scope.formData = {}; // clear the form so our user is ready to enter another
+                            $scope.users = data; // assign our new list of todos
+                        });
+                } else alert("两次密码必须一致")
             }
-
         };
     }]);

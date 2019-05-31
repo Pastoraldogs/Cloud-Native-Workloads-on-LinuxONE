@@ -5,6 +5,7 @@ angular.module('bankController', [])
         $scope.state = window.location.search;
         $scope.existUser = false
         $scope.userData = {};
+        $scope.buyRec = [];
         $scope.loading = true;
         $scope.products = [{
             id: 1,
@@ -27,6 +28,11 @@ angular.module('bankController', [])
                     $scope.existUser = true
                 } else
                     $scope.existUser = false
+            });
+        Services.buyRecord($scope.formData)
+            .success(function (data) {
+                $scope.loading = false;
+                $scope.buyRec = data;
             });
 
         $scope.deposit = function () {

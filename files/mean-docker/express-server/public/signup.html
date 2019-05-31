@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="app" ng-app="meanLogin">
+<html lang="en" class="app" ng-app="meanCreateUser">
 
 <head>
     <meta charset="utf-8" />
-    <title>Login</title>
+    <title>Welcome</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="./static/login/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="./static/login/css/simple-line-icons.css" type="text/css" />
@@ -44,40 +44,63 @@
     <script src="js/controllers/login.js"></script> <!-- load up our controller -->
     <script src="js/services/todos.js"></script> <!-- load our todo service -->
     <script src="js/coreLogin.js"></script> <!-- load our main application -->
+    <script type="text/javascript">
+        function checkpwd() {
+            var p1 = document.form1.password.value;
+            var p2 = document.form1.confirmpassword.value;
+            if (p1 == "") {
+                alert("请输入密码！");
+                document.form1.password.focus();
+                return false;
+            }
+
+            if (p1 != p2) {
+                alert("两次输入密码不一致，请重新输入");
+                return false;
+            } else {
+                //执行数据回传到服务器
+            }
+        }
+    </script>
 </head>
 
-<body background="images/bodybg.jpg" ng-controller="loginController">
+<body background="images/bodybg.jpg" ng-controller="userController">
     <nav class="navbar navbar-dark navbar-fixed-top">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.html">XX  BANK</a>
-                </div>
-                
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li class="active">
-                            <a href="./login.html">Login</a>
-                        </li>
-                        <li>
-                            <a href="./signup.html">Sign Up Now</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./index.html">XX BANK</a>
             </div>
-            <!-- /.container-fluid -->
-        </nav>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a href="./login.html">Login</a>
+                    </li>
+                    <li>
+                        <!--这个页面没有实现-->
+                        <a href="./search">Question</a>
+                    </li>
+                    <li class="active">
+                        <a href="./signup.html">Sign Up Now</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
     <div class="divc">
         <div class="cen" style="width:50%;float:left;">
             <br />
@@ -91,22 +114,29 @@
             <section id="content" class="m-t-lg wrapper-md animated fadeInUp ">
                 <div class="container aside-xl" style="margin-top: 48px;">
                     <a class="navbar-brand block"><span class="h1 font-bold" style="color: #ffffff">Please
-                            Login</span></a>
+                            Sign Up</span></a>
                     <section class="m-b-lg">
                         <!-- need action -->
-                        <form action="javascript:;" method="post">
+                        <form action="javascript:;" method="post" name="form1">
                             <div class="form-group">
                                 <input type="username" name="username" placeholder="name"
                                     class="form-control  input-lg text-center no-border" ng-model="formData.name">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" placeholder="passwd"
+                                <input type="password" name="password" placeholder="enter password"
                                     class="form-control  input-lg text-center no-border" ng-model="formData.password">
                             </div>
+                            <div>
+                                <input type="password" name="confirmpassword" placeholder="confirm your password"
+                                    class="form-control input-lg text-center no-border" ng-model="formData.password2">
+                            </div>
 
+                            <br />
                             <button type="submit" class="btn btn-lg btn-danger lt b-white b-2x btn-block"
-                                id="validate-submit" ng-click="login()">
-                                <i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">登录</span></button>
+                                id="validate-submit" on-click="checkpwd()" ng-click='createUser()'>
+                                <i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign up</span>
+                            </button>
+
                         </form>
                     </section>
                 </div>

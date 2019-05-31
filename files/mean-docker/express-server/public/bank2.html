@@ -15,7 +15,7 @@
     <script src="js/coreBank.js"></script> <!-- load our main application -->
     <style>
         .fakeimg {
-            height: 200px;
+            height:800px;
             background: #B0E2FF;
         }
     </style>
@@ -23,60 +23,120 @@
 
 <body ng-controller="bankUserController">
 
-    <div class="jumbotron text-center" style="margin-bottom:0">
-        <div class="fakeimg">
-            <img src>
-            <h1>(这里肯定还得美化一下)欢迎使用XX银行管理系统<h1>
-        </div>
-
-    </div>
+    
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">导航</a>
+        <a class="navbar-brand" href="#">X银行管理系统</a>
 
         </div>
     </nav>
-
-    <div class="container" style="margin-top:30px">
+</div>  
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>用户名</th>
+			<th>ID</th>
+			<th>余额</th>
+			<th>理财余额</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span>{{ formData.name }}</span></td>
+			<td><span>{{ userData.balance+userData.financing }}</td>
+			<td><span>{{ userData.balance}}</td>
+			<td><span>{{ userData.financing}}</td>
+		</tr>
+		
+	</tbody>
+</table>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>已购理财产品</th>  
+            
+                <th>购买金额</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span>0</span></td>
+                <td><span>0</td>
+            </tr>
+            <tr>
+                <td><span>0</span></td>
+                <td><span>0</td>
+            </tr>
+            <tr>
+                <td><span>0</span></td>
+                <td><span>0</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>  
+    <div class="container" style="margin-top:80px">
         <div class="row">
-            <div class="col-sm-3">
-                <h2>用户信息</h2>
-                <p>用户名: <span>{{ formData.name }}</span></p>
-                <p>全部金额: <span>{{ userData.balance+userData.financing }}</span></p>
-                <p>可用金额: <span>{{ userData.balance}}</span></p>
-                <p>理财金额: <span>{{ userData.financing}}</span></p>
-                <hr class="d-sm-none">
-            </div>
-            <div class="col-sm-3">
+           
+            <div class="col-sm-2">
 
-                <h2>转账</h2>
+                <h2 class="text-center">存钱</h2>
                 <form>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">转账对象</span>
+                            <span class="input-group-text" >存多少？</span>
                         </div>
                         <input type="text" class="form-control" ng-model="formData.receiver">
                     </div>
                 </form>
+                <button class="btn button btn-primary"  type="submit " ng-click="transfer()">确定</button>
+            </div>
+                <div class="col-sm-2">
+                <h2 class="text-center">取钱</h2>
                 <form>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">转账金额</span>
-
+                            <span class="input-group-text">取多少?</span>
                         </div>
-                        <input type="text" class="form-control" ng-model="formData.amount">
+                        <input type="text" class="form-control" ng-model="formData.receiver">
                     </div>
                 </form>
-                <button class="btn button btn-primary" type="submit" ng-click="transfer()">转账</button>
+                <button class="btn button btn-primary" type="submit" ng-click="transfer()">确定</button>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
             </div>
-            <div class="col-sm-1">
-                <br> <br>
-            </div>
-            <div class="col-sm-4">
+                <div class="col-sm-3">
+                <h2 class="text-center">转账</h2>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">转账对象</span>
+                            </div>
+                            <input type="text" class="form-control" ng-model="formData.receiver">
+                        </div>
+                    </form>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">转账金额</span>
+    
+                            </div>
+                            <input type="text" class="form-control" ng-model="formData.amount">
+                        </div>
+                    </form>
+                    <button class="btn button btn-primary" type="submit" ng-click="transfer()">转账</button>
+                </div>
 
-                <h2>理财产品</h2>
+           
+
+
+            <div class="col-sm-3">
+
+                <h2 class="text-center">理财产品</h2>
                 <select class="form-control" id="sel1" ng-model="formData.product"
-                    ng-init="formData.product = products[0].name" ng-options="x.name for x in products">
+                    ng-options="x.name for x in products">
                 </select>
 
                 <form>
@@ -90,7 +150,7 @@
                     </div>
                 </form>
                 <button class="btn button btn-primary" type="submit" ng-click="buy()">确定</button>
-
+                
             </div>
 
 

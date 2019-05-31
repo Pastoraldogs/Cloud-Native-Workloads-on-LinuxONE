@@ -201,6 +201,16 @@ module.exports = function (app) {
         })
     })
 
+    app.get('/api/buyRecord', function (req, res) {
+        BuyRecord.find({
+            name: req.body.name
+        }, function (err, records) {
+            if (err) {
+                res.send(err);
+            }
+            res.json(records); // return all todos in JSON format
+        });
+    })
 
     // application -------------------------------------------------------------
     app.get('*', function (req, res) {
