@@ -21,19 +21,19 @@ angular.module('bankController', [])
         $scope.formData.name = tempList[0].split("=")[1]
         $scope.formData.password = tempList[1].split("=")[1]
         Services.login($scope.formData)
-            .success(function (data) {
+            .success(function (data1) {
                 $scope.loading = false;
-                $scope.userData = data[0];
+                $scope.userData = data1[0];
                 if ($scope.userData.length !== 0) {
                     $scope.existUser = true
                 } else
                     $scope.existUser = false
             });
-        //Services.buyRecord($scope.formData)
-        //    .success(function (data) {
-        //        $scope.loading = false;
-        //        $scope.buyRec = data;
-        //    });
+        Services.buyRecord($scope.formData)
+            .success(function (data2) {
+                $scope.buyRec = data2;
+            });
+
 
         $scope.deposit = function () {
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "") {
