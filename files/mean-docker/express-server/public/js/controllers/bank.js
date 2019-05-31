@@ -29,11 +29,11 @@ angular.module('bankController', [])
                 } else
                     $scope.existUser = false
             });
-        Services.buyRecord($scope.formData)
-            .success(function (data) {
-                $scope.loading = false;
-                $scope.buyRec = data;
-            });
+        //Services.buyRecord($scope.formData)
+        //    .success(function (data) {
+        //        $scope.loading = false;
+        //        $scope.buyRec = data;
+        //    });
 
         $scope.deposit = function () {
             if ($scope.formData.name != undefined && $scope.formData.password != undefined && $scope.formData.amount != undefined && $scope.formData.name != "" && $scope.formData.password != "") {
