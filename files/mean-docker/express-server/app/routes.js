@@ -187,13 +187,14 @@ module.exports = function (app) {
                             name: req.body.name,
                         },
                         function (err, user2) {
-                            res.json(user2)
                             BuyRecord.create({
                                 name: req.body.name,
                                 product: req.body.product,
                                 amount: amount,
                                 time: time,
                                 done: false
+                            }, function () {
+                                res.json(user2)
                             })
                         })
                 })
