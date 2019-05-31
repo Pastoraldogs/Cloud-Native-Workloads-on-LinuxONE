@@ -26,7 +26,7 @@ angular.module('bankController', [])
                 $scope.userData = data1[0];
                 if ($scope.data1.length !== 0) {
                     $scope.existUser = true
-                    Services.buyRecord($scope.formData)
+                    Services.getBuyRecord($scope.formData)
                         .success(function (data2) {
                             $scope.buyRec = data2;
                         });
